@@ -1,8 +1,0 @@
-alt-a - zaznacza pole (4 miejsca pod cyframi po przek¹tnej)
-alt-s - pokazuje wartoœci planszy
-alt-x - wykonuje jeden ruch
-alt-z - w³¹cza i wy³¹cza wykonywanie ruchów
-
-"Swappy Tool.ahk" mo¿na skompilowac za pomoc¹ https://autohotkey.com/
-
-http://swappy10.com/
