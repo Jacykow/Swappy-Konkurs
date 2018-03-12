@@ -7,7 +7,7 @@ int main(){
 	plik>>a;
 	plik.close();
 	plik.open("ruch.txt",ios::out);
-	plik<<"x o o o\no o o o\no o o o\no o x o";
+	plik<<"o o o o\no o x o\no x o o\no o o o";
 	plik.close();
 	return 0;
 }
