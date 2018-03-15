@@ -21,7 +21,7 @@ Gdy "Swappy Tool.exe" jest odpalone działają następujące skróty:
 5. Powtarzam kroki 3-4 dopóki nie jestem zadowolony, a wtedy naciskam **alt-z** i patrzę jak dzieje się magia
 6. Powtarzam kroki 3-5 dopóki nie jestem już na serio zadowolony, a wtedy wysyłam Jackowi na maila (jacgulij@gmail.com) sam kod z punktu 3. i wieżę, że on sobie poradzi z kompilacją
 
-![Tu miało być zdjęcie, ale się nie załadowało :(](https://github.com/Jacykow/Swappy-Konkurs/gdzie.png "Nie trzeba w kropki, ale myszka musi być w komórkach i nie na liczbach, bo sprawdza po kolorze")
+![Zobacz "gdzie.png"](https://github.com/Jacykow/Swappy-Konkurs/blob/master/gdzie.png "Nie trzeba w kropki, ale myszka musi być w komórkach i nie na liczbach, bo sprawdza po kolorze")
 
 #### Uwagi
 - Jak coś nie działa to spokojnie napiszcie, a chwała tym co sami poprawią i też wyślą
