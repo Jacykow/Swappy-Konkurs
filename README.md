@@ -9,7 +9,7 @@ Gdy "Swappy Tool.exe" jest odpalone działają następujące skróty:
 
 #### Jak to się robi?
 1. Odpalam "Swappy Tool.exe"
-    - "Swappy Tool.ahk" można skompilowac za pomocą [AutoHotkey](https://autohotkey.com/), jeżeli nie ufam plikom .exe z internetu i z resztą bardzo dobrze.
+    - Zamiast tego można skompilowac "Swappy Tool.ahk" za pomocą [AutoHotkey](https://autohotkey.com/), szczególnie jeżeli nie ufam plikom .exe z internetu i z resztą bardzo dobrze.
 2. Najeżdżam myszką pod cyfrą każdej z komórek na jednej przekątnej i naciskam **alt-a** przy każdej, żeby zaznaczyć ich pozycje na potrzeby skryptu (jak na załączonym poniżej "gdzie.png")
     - naciskam **alt-s** i sprawdzam, czy to co widzę ma sens
 3. Piszę kod (w przykładzie macie w c++)
