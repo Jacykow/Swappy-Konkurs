@@ -20,7 +20,7 @@ Gdy "Swappy Tool.exe" jest odpalone działają następujące skróty:
     - naciskam **alt-x** i sprawdzam, czy skrypt robi to co mój program mu kazał
 5. Powtarzam kroki 3-4 dopóki nie jestem zadowolony, a wtedy naciskam **alt-z** i patrzę jak dzieje się magia
 6. Powtarzam kroki 3-5 dopóki nie jestem już na serio zadowolony, a wtedy wysyłam Jackowi na maila (jacgulij@gmail.com) sam kod z punktu 3. i wierzę, że on sobie poradzi z kompilacją
-    - Nalegam na mało tesktu w samym mailu (lepiej w komentarzach w kodzie), ale podpiszcie się "Imię Nazwisko KLASA" i jaki macie rekord punktów oraz największą wartość komórki
+    - Nalegam na mało tekstu w samym mailu (lepiej w komentarzach w kodzie), ale podpiszcie się "Imię Nazwisko KLASA" i jaki macie rekord punktów oraz największą wartość komórki
 
 ![Zobacz "gdzie.png"](https://github.com/Jacykow/Swappy-Konkurs/blob/master/gdzie.png "Nie trzeba w kropki, ale myszka musi być w komórkach i nie na liczbach, bo skrypt sprawdza po kolorze")
 
