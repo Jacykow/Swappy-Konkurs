@@ -16,7 +16,6 @@ void kafelki(int a[])
 }
 void wypisz_wymaluj(int x, int y)
 {
-	//cout<<x<<" "<<y<<endl;
 	for(int i=1;i<=16;i++)
 	{
 		if(i==x||i==y)ruch+="x ";
