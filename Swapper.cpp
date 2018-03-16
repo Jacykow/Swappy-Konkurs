@@ -1,3 +1,4 @@
+//made by Grzege
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -53,62 +54,68 @@ int main(){
 		{
 			for(int i=0;i<16;i+=4)//i->rz¹d planszy numerowany od 0, ró¿nica pionowa pomiêdzy rzêdami wynosi 4
 			{
-				int h14=(2-j)*k*3+(j-1)*k+j+i;//j=1,k=1|j=2,k=1|j=1vj=2 k=0
-				int h23=(2-j)*k+(j-1)*(-k)+(j+1)+i;
-				int h32=(2-j)*(-k)+(j-1)*(-k)*3+(j+2)+i;
-				int v14=(2-j)*k*12+(j-1)*k*4+(j-1)*3+j+i/4;//j=1,k=1|j=2,k=1|j=1vj=2 k=0
-				int v23=(2-j)*k*4+(j-1)*k*(-4)+(j-1)*3+j+4+i/4;
-				int v32=(2-j)*k*(-4)+(j-1)*k*(-12)+(j-1)*3+j+8+i/4;
-				if((a[h14]==a[h23])&&a[h32]>0&&a[h14]>0&&a[h23]>0)
+				int h[3],v[3];
+				h[0]=(2-j)*k*3+(j-1)*k+j+i;//j=1,k=1|j=2,k=1|j=1vj=2 k=0
+				h[1]=(2-j)*k+(j-1)*(-k)+(j+1)+i;
+				h[2]=(2-j)*(-k)+(j-1)*(-k)*3+(j+2)+i;
+				v[0]=(2-j)*k*12+(j-1)*k*4+(j-1)*3+j+i/4;//j=1,k=1|j=2,k=1|j=1vj=2 k=0
+				v[1]=(2-j)*k*4+(j-1)*k*(-4)+(j-1)*3+j+4+i/4;
+				v[2]=(2-j)*k*(-4)+(j-1)*k*(-12)+(j-1)*3+j+8+i/4;
+				if((a[h[0]]==a[h[1]])&&a[h[2]]>0&&a[h[0]]>0&&a[h[1]]>0)
 				{
-					//cout<<h14<<" "<<h23<<endl;
-					int z=szukajta(a,a[h14],h14,h23);
+					//cout<<h[0]<<" "<<h[1]<<endl;
+					int z=szukajta(a,a[h[0]],h[0],h[1]);
 					if(z>0)
 					{
-						wypisz_wymaluj(h32,z);
+						wypisz_wymaluj(h[2],z);
 						plik<<ruch;
-						goto kuniec_dymbiec;
+						cout<<ruch;
+						plik.close();
+						return 0;
 					}
 				}
-				if((a[h14]==a[h32])&&a[h32]>0&&a[h14]>0&&a[h23]>0)
+				if((a[h[0]]==a[h[2]])&&a[h[2]]>0&&a[h[0]]>0&&a[h[1]]>0)
 				{
-					//cout<<h14<<" "<<h23<<endl;
-					int z=szukajta(a,a[h14],h14,h32);
+					//cout<<h[0]<<" "<<h[1]<<endl;
+					int z=szukajta(a,a[h[0]],h[0],h[2]);
 					if(z>0)
 					{
-						wypisz_wymaluj(h23,z);
+						wypisz_wymaluj(h[1],z);
 						plik<<ruch;
-						goto kuniec_dymbiec;
+						cout<<ruch;
+						plik.close();
+						return 0;
 					}
 				}
-				if((a[v14]==a[v23])&&a[v32]>0&&a[v14]>0&&a[v23]>0)
+				if((a[v[0]]==a[v[1]])&&a[v[2]]>0&&a[v[0]]>0&&a[v[1]]>0)
 				{
-					//cout<<h14<<" "<<h23<<endl;
-					int z=szukajta(a,a[v14],v14,v23);
+					//cout<<h[0]<<" "<<h[1]<<endl;
+					int z=szukajta(a,a[v[0]],v[0],v[1]);
 					if(z>0)
 					{
-						wypisz_wymaluj(v32,z);
+						wypisz_wymaluj(v[2],z);
 						plik<<ruch;
-						goto kuniec_dymbiec;
+						cout<<ruch;
+						plik.close();
+						return 0;
 					}
 				}
-				if((a[v14]==a[v32])&&a[v32]>0&&a[v14]>0&&a[v23]>0)
+				if((a[v[0]]==a[v[2]])&&a[v[2]]>0&&a[v[0]]>0&&a[v[1]]>0)
 				{
-					//cout<<v14<<" "<<v32<<endl;
-					int z=szukajta(a,a[v14],v14,v32);
-						//cout<<z<<" "<<v23<<endl;
+					//cout<<v[0]<<" "<<v[2]<<endl;
+					int z=szukajta(a,a[v[0]],v[0],v[2]);
+						//cout<<z<<" "<<v[1]<<endl;
 					if(z>0)
 					{
-						wypisz_wymaluj(v23,z);
+						wypisz_wymaluj(v[1],z);
 						plik<<ruch;
-						goto kuniec_dymbiec;
+						cout<<ruch;
+						plik.close();
+						return 0;
 					}
 				}
 			}
 		}
 	}
-	kuniec_dymbiec:
-	cout<<ruch;
-	plik.close();
-	return 0;
+
 }
