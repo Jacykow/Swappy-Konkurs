@@ -3,7 +3,7 @@
 #include<string>
 using namespace std;
 string ruch;
-int z=-1,n=-1;
+int z=-1,n=-1,p=-1,k=1,w=-1;
 void kafelki(int a[4][4])
 {
 	for(int i=0;i<4;i++)
@@ -37,27 +37,79 @@ int szukajta (int a[4][4],int x, int r1, int k1, int r2, int k2)
 	}
 	return -1;
 }
-void horizontal(int a[4][4])
+void kareta(int a[4][4],int w, int x, int y, int hv)
 {
+	if(hv)n=4*y+x;
+	else n=4*x+y;
 	for(int i=0;i<4;i++)
+	{
+		for(int j=0;j<4;j++)
+		{	
+			if(hv&&((a[i][j]==w)&&(i!=y)))z=4*i+j;
+			else if(hv==0&&((a[i][j]==w)&&(j!=y)))z=4*i+j;
+		}
+	}
+	if(z>=0)wypisz_wymaluj(a,z,n);
+	k=0;
+}
+void horizontal(int a[4][4])
+	{
+	int h[4][4]={0};
+	for(int i=0;i<4;i++)
+	{
+		p=-1;
+		for(int j=0;j<4;j++)
+		{		
+			if(a[i][0]==-1||a[i][1]==-1||a[i][2]==-1||a[i][3]==-1)
+			{
+				h[i]==0;
+				break;
+			}
+			for(int r=0;r<4;r++)
+			{
+				if((a[i][j]==a[i][r])&&j!=r)
+				{
+				h[i][j]++;
+				//cout<<a[i][j]<<"<?>"<<a[i][r]<<endl;
+				}
+				else if(j!=r)p=r;
+			}
+			//cout<<h[i]<<" ";
+			/*if((j<2&&j>0)&&((a[i][j]==a[i][j+1]&&a[i][j+1]==a[i][j-1])||(a[i][j]==a[i][2+j]&&a[i][j]==a[i][0])))h[i]++;
+			else if(a[i][j]==a[i][j+1])h[i]++;
+			else if(a[i][j]!=a[i][j-1]||a[i][j]!=a[i][j-2])p=j;*/
+			if(p==-1)p=3;
+			if(h[i][j]==2)
+			{
+				cout<<"hv "<<p<<"\n";
+				if(p>0)w=a[i][p-1];
+				else w=a[i][p+1];
+				kareta(a,w,p,i,1);	
+				break;
+			}
+		}
+	if(!k)break;
+	}
+		//cout<<endl;
+	if(z<0&&k)for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<2;j++)
 		{
-			if (a[i][j]==a[i][j+2]&&a[i][j]>0&&a[i][j+1]>0&&a[i][j+2]>0)
+			if (a[i][j]==a[i][j+2]&&a[i][j]>0&&a[i][j+1]>0&&a[i][j+2]>0)//0x2 v 1x3
 			{
 				//cout<<"y1"<<endl;
 				z=szukajta(a,a[i][j],i,j,i,j+2);
 				n=i*4+j+1;
 				if(z>=0)break;
 			}
-			else if (a[i][j]==a[i][j+1]&&a[i][j]>0&&a[i][j+1]>0&&a[i][j+2]>0)
+			else if (a[i][j]==a[i][j+1]&&a[i][j]>0&&a[i][j+1]>0&&a[i][j+2]>0)//01x v 12x
 			{
 				//cout<<"y2"<<endl;
 				z=szukajta(a,a[i][j],i,j,i,j+1);
 				n=i*4+j+2;
 				if(z>=0)break;
 			}
-			else if(a[i][3-j]==a[i][2-j]&&a[i][3-j]>0&&a[i][2-j]>0&&a[i][1-j]>0)
+			else if(a[i][3-j]==a[i][2-j]&&a[i][3-j]>0&&a[i][2-j]>0&&a[i][1-j]>0)//32x v 21x
 			{
 				//cout<<a[i][3-j]<<" "<<a[i][2-j]<<" y3"<<endl;
 				z=szukajta(a,a[i][3-j],i,3-j,i,2-j);
@@ -70,27 +122,63 @@ void horizontal(int a[4][4])
 }
 void vertical(int a[4][4])
 {
+	int v[4][4]={0};
 	for(int j=0;j<4;j++)
+	{
+		p=-1;
+		for(int i=0;i<4;i++)
+		{		
+			if(a[0][j]==-1||a[1][j]==-1||a[2][j]==-1||a[3][j]==-1)
+			{
+				v[i][j]==0;
+				break;
+			}
+			for(int r=0;r<4;r++)
+			{
+				if((a[i][j]==a[r][j])&&i!=r)
+				{
+				v[i][j]++;
+				cout<<v[i][j]<<" "<<a[i][j]<<"<?>"<<a[r][j]<<endl;
+				}
+				else if(i!=r)p=r;
+			}
+			//cout<<h[i]<<" ";
+			/*if((j<2&&j>0)&&((a[i][j]==a[i][j+1]&&a[i][j+1]==a[i][j-1])||(a[i][j]==a[i][2+j]&&a[i][j]==a[i][0])))h[i]++;
+			else if(a[i][j]==a[i][j+1])h[i]++;
+			else if(a[i][j]!=a[i][j-1]||a[i][j]!=a[i][j-2])p=j;*/
+			if(p==-1)p=3;
+			if(v[i][j]==2)
+			{
+				cout<<"kv "<<p<<"\n";
+				if(p>0)w=a[p-1][j];
+				else w=a[p+1][j];
+				kareta(a,w,p,j,0);	
+				break;
+			}
+		}
+	if(!k)break;
+	}
+	if(z<0&&k)for(int j=0;j<4;j++)
 	{
 		for(int i=0;i<2;i++)
 		{
 			if (a[i][j]==a[i+2][j]&&a[i][j]>0&&a[i+1][j]>0&&a[i+2][j]>0)
 			{
-				cout<<i<<" "<<j<<" "<<"y1"<<endl;
+				//cout<<i<<" "<<j<<" "<<"y1"<<endl;
 				z=szukajta(a,a[i][j],i,j,i+2,j);
 				n=(i+1)*4+j;
 				if(z>=0)break;
 			}
 			else if (a[i][j]==a[i+1][j]&&a[i][j]>0&&a[i+1][j]>0&&a[i+2][j]>0)
 			{
-				cout<<"y2"<<endl;
+				//cout<<"y2"<<endl;
 				z=szukajta(a,a[i][j],i,j,i+1,j);
 				n=(i+2)*4+j;
 				if(z>=0)break;
 			}
 			else if(a[3-i][j]==a[2-i][j]&&a[3-i][j]>0&&a[2-i][j]>0&&a[1-i][j]>0)
 			{
-				cout<<a[i][3-j]<<" "<<a[i][2-j]<<" y3"<<endl;
+				//cout<<a[i][3-j]<<" "<<a[i][2-j]<<" y3"<<endl;
 				z=szukajta(a,a[3-i][j],3-i,j,2-i,j);
 				n=(1-i)*4+j;
 				if(z>=0)break;
@@ -115,9 +203,9 @@ int main(){
 	plik.open("ruch.txt",ios::out);
 	//plik<<"x o o o\no o o o\no x o o\no o o o";
 	horizontal(a);
-	if(z<0)vertical(a);
-	cout<<"z="<<z<<"\t n="<<n<<endl;
-	if(z>=0)wypisz_wymaluj(a,z,n);
+	if(k)vertical(a);
+	cout<<"z="<<z<<"\t n="<<n<<"\t k="<<k<<endl;
+	if(z>=0&&k)wypisz_wymaluj(a,z,n);
 	plik<<ruch;
 	cout<<ruch;
 	plik.close();
