@@ -1,3 +1,4 @@
+//made by Grzege
 #include<iostream>
 #include<iomanip>
 #include<windows.h>
@@ -40,7 +41,7 @@ void wypisz_wymaluj(int a[4][4],int x, int y)
 }
 void funkcja_ktora_nic_nie_robi(double xd)
 {
-	printf("Tak, to prawda - J.Gulij to lider.\n");
+	printf("Tak, to prawda.\n");
 }
 int szukajta (int a[4][4],int x, int r1, int k1, int r2, int k2)
 {
