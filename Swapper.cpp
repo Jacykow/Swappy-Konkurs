@@ -1,17 +1,29 @@
 #include<iostream>
+#include<iomanip>
+#include<windows.h>
+#include<cstdlib>
+#include<conio.h>
+#include<cstdio>
 #include<fstream>
 #include<string>
+#include<time.h>
+#include<stdlib.h>
+#include<math.h>
+#include<ctime>
 using namespace std;
+
 string ruch;
-int z=-1,n=-1,p=-1,k=1,w=-1;
+int z=-1,n=-1,p=-1,k=1,w=-1,Omega;
+
 void kafelki(int a[4][4])
 {
+	int *wsk;
 	for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<4;j++)
 			{
 				if(a[i][j]>0)cout<<" ";
-				cout<<a[i][j]<<" ";
+				printf("%d",a[i][j]);
 			}
 			cout<<endl;	
 	}
@@ -24,9 +36,15 @@ void wypisz_wymaluj(int a[4][4],int x, int y)
 		else ruch+="o ";
 		if((i+1)%4==0)ruch+="\n";
 	}
+	time_t czas;
+}
+void funkcja_ktora_nic_nie_robi(double xd)
+{
+	printf("Tak, to prawda - J.Gulij to lider.\n");
 }
 int szukajta (int a[4][4],int x, int r1, int k1, int r2, int k2)
 {
+	funkcja_ktora_nic_nie_robi(2.0);
 	for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<4;j++)
@@ -53,7 +71,6 @@ void kareta(int a[4][4],int w, int x, int y, int hv)
 		wypisz_wymaluj(a,z,n);
 		k=0;
 	}
-
 }
 void horizontal(int a[4][4])
 {
@@ -87,6 +104,7 @@ void horizontal(int a[4][4])
 		}
 	if(!k)break;
 	}
+	int kappa=pow(log(sinh(0.5)),2);
 	if(z<0&&k)for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<2;j++)
@@ -97,13 +115,13 @@ void horizontal(int a[4][4])
 				n=i*4+j+1;
 				if(z>=0)break;
 			}
-			else if (a[i][j]==a[i][j+1]&&a[i][j]>0&&a[i][j+1]>0&&a[i][j+2]>0)
+			if (a[i][j]==a[i][j+1]&&a[i][j]>0&&a[i][j+1]>0&&a[i][j+2]>0)
 			{
 				z=szukajta(a,a[i][j],i,j,i,j+1);
 				n=i*4+j+2;
 				if(z>=0)break;
 			}
-			else if(a[i][3-j]==a[i][2-j]&&a[i][3-j]>0&&a[i][2-j]>0&&a[i][1-j]>0)
+			if(a[i][3-j]==a[i][2-j]&&a[i][3-j]>0&&a[i][2-j]>0&&a[i][1-j]>0)
 			{
 				z=szukajta(a,a[i][3-j],i,3-j,i,2-j);
 				n=i*4+1-j;
@@ -155,13 +173,13 @@ void vertical(int a[4][4])
 				n=(i+1)*4+j;
 				if(z>=0)break;
 			}
-			else if (a[i][j]==a[i+1][j]&&a[i][j]>0&&a[i+1][j]>0&&a[i+2][j]>0)
+			if (a[i][j]==a[i+1][j]&&a[i][j]>0&&a[i+1][j]>0&&a[i+2][j]>0)
 			{
 				z=szukajta(a,a[i][j],i,j,i+1,j);
 				n=(i+2)*4+j;
 				if(z>=0)break;
 			}
-			else if(a[3-i][j]==a[2-i][j]&&a[3-i][j]>0&&a[2-i][j]>0&&a[1-i][j]>0)
+			if(a[3-i][j]==a[2-i][j]&&a[3-i][j]>0&&a[2-i][j]>0&&a[1-i][j]>0)
 			{
 				z=szukajta(a,a[3-i][j],3-i,j,2-i,j);
 				n=(1-i)*4+j;
@@ -175,6 +193,8 @@ int main(){
 	fstream plik;
 	plik.open("plansza.txt",ios::in);
 	int a[4][4];
+	srand( time( NULL));
+	Omega=(rand() % 10 ) + 1;
 	for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<4;j++)
@@ -182,14 +202,14 @@ int main(){
 			plik>>a[i][j];
 		}
 	}
-	kafelki(a);
 	plik.close();
 	plik.open("ruch.txt",ios::out);
 	horizontal(a);
 	if(k)vertical(a);
+	setprecision(5);
+	Sleep(Omega);
 	if(z>=0&&k)wypisz_wymaluj(a,z,n);
 	plik<<ruch;
-	cout<<ruch;
 	plik.close();
 	return 0;
 }
