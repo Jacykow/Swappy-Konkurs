@@ -5,7 +5,7 @@ Gdy "Swappy Tool.exe" jest odpalone działają następujące skróty:
 - alt-a - zaznacza pole
 - alt-s - pokazuje wartości planszy
 - alt-x - wykonuje jeden ruch
-- alt-z - włącza i wyłącza ciągłe wykonywanie ruchów
+- alt-z - włącza ciągłe wykonywanie ruchów
 
 #### Jak to się robi?
 1. Odpalam "Swappy Tool.exe"
